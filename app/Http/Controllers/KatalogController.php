@@ -21,7 +21,20 @@ class KatalogController extends Controller
 
     public function show($id)
     {
-        return "<h1>Detail Produk</h1>
-                <p>ID Produk: $id</p>";
+        $produk = [
+            1 => ['nama'=>'Laptop','harga'=>8000000],
+            2 => ['nama'=>'Mouse','harga'=>150000],
+            3 => ['nama'=>'Keyboard','harga'=>300000],
+            4 => ['nama'=>'Monitor','harga'=>2000000],
+            5 => ['nama'=>'Flashdisk','harga'=>100000],
+        ];
+
+        if(isset($produk[$id])){
+            return view('katalog.show', [
+                'produk' => $produk[$id]
+            ]);
+        }
+
+        return "Produk tidak ditemukan";
     }
 }
