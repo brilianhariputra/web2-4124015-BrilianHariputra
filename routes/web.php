@@ -8,7 +8,11 @@ use App\Http\Controllers\KatalogController;
 use App\Http\Controllers\KatalogController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RuanganController;
+<<<<<<< HEAD
 >>>>>>> 75ae7736e5dd666dad9ff1bd98aa360f91c9c536
+=======
+use App\Http\Controllers\ProdukController;
+>>>>>>> 3f97174 (update: tambah produk controller dan halaman blade)
 
 Route::get('/', function () {
     return view('welcome');
@@ -76,4 +80,19 @@ Route::get('/profil/{nim}', [ProfilController::class,'show'])->name('profil.show
 Route::get('/ruangan', [RuanganController::class,'index'])->name('ruangan.index');
 Route::get('/ruangan/{id}', [RuanganController::class,'show'])->name('ruangan.show');
 Route::get('/booking/{id}', [RuanganController::class,'booking'])->name('ruangan.booking');
+<<<<<<< HEAD
 >>>>>>> 75ae7736e5dd666dad9ff1bd98aa360f91c9c536
+=======
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
+Route::get('/produk/create', [ProdukController::class, 'create'])->name('produk.create');
+Route::post('/produk', [ProdukController::class, 'store'])->name('produk.store');
+
+Route::get('/tentang', function () {
+    return view('tentang');
+});
+>>>>>>> 3f97174 (update: tambah produk controller dan halaman blade)
