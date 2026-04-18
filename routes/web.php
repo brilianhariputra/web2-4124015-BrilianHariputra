@@ -1,79 +1,51 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\KatalogController;
-=======
-use App\Http\Controllers\KatalogController;
-use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RuanganController;
->>>>>>> 75ae7736e5dd666dad9ff1bd98aa360f91c9c536
 
+// 1. Halaman Utama (Sekarang mengarah ke Landing Page/Beranda)
 Route::get('/', function () {
-    return view('welcome');
+    return view('beranda');
+})->name('home');
+
+// 2. Halaman Test Tailwind
+Route::get('/tes', function () {
+    return view('test');
 });
 
-Route::get('/brilianhariputra', function () {
-    return 'Halo, saya Brilian Hariputra. Ini rute kolaborasi saya!';
-});
-
+// 3. Route Perkenalan Anggota (Tampilan Langsung)
 Route::get('/brilian', function () {
-    return '<h1>Halo! Nama saya Brilian Hariputra</h1>
-            <p>NIM: 4124015 | Prodi: Sistem Informasi</p>
-            <p>Saya siap belajar Laravel! 🚀</p>';
+    return '<h1>Halo! Nama saya Brilian Hariputra</h1><p>NIM: 4124015</p>';
 });
 
 Route::get('/ahmad', function () {
-    return '<h1>Halo! Nama saya Ahmad Ibnu Muthohhari</h1>
-            <p>NIM: 4124023 | Prodi: Sistem Informasi</p>
-            <p>Saya siap belajar Laravel! 🚀</p>';
+    return '<h1>Halo! Nama saya Ahmad Ibnu Muthohhari</h1><p>NIM: 4124023</p>';
 });
 
-<<<<<<< HEAD
-/*
-|--------------------------------------------------------------------------
-| Static Routes
-|--------------------------------------------------------------------------
-*/
+Route::get('/zulkhi', function () {
+    return '<h1>Halo! Nama saya Muhammad Zulkhi Mujtahid</h1><p>NIM: 4124043</p>';
+});
 
-Route::get('/home', function () {
-    return "<h1>Selamat Datang di Website Saya</h1>";
-})->name('SIPERFA.index');
+// 4. Fitur Katalog Produk
+Route::get('/katalog', [KatalogController::class, 'index'])->name('katalog.index');
+Route::get('/katalog/{id}', [KatalogController::class, 'show'])->name('katalog.show');
 
+// 5. Fitur Profil
+Route::get('/profil', [ProfilController::class, 'index'])->name('profil.index');
+Route::get('/profil/{nim}', [ProfilController::class, 'show'])->name('profil.show');
+
+// 6. Fitur Ruangan & Booking (Zulkhi)
+Route::get('/ruangan', [RuanganController::class, 'index'])->name('ruangan.index');
+Route::get('/ruangan/{id}', [RuanganController::class, 'show'])->name('ruangan.show');
+Route::get('/booking/{id}', [RuanganController::class, 'booking'])->name('ruangan.booking');
+
+// 7. Route Statis Tambahan
 Route::get('/about', function () {
     return "<h1>Halaman Tentang Saya</h1>";
 })->name('about.index');
 
 Route::get('/kontak', function () {
-    return "<h1>Hubungi Saya di email:brilianhariputra99@gmail.com</h1>";
+    return "<h1>Hubungi Saya di email: brilianhariputra99@gmail.com</h1>";
 })->name('kontak.index');
-
-/*
-|--------------------------------------------------------------------------
-| Dynamic Routes
-|--------------------------------------------------------------------------
-*/
-
-Route::get('/profil', [ProfilController::class, 'index'])->name('profil.index');
-Route::get('/profil/{nim}', [ProfilController::class, 'show'])->name('profil.show');
-
-Route::get('/katalog', [KatalogController::class, 'index'])->name('katalog.index');
-Route::get('/katalog/{id}', [KatalogController::class, 'show'])->name('katalog.show');
-=======
-Route::get('/zulkhi', function () {
-    return '<h1>Halo! Nama saya Muhammad Zulkhi Mujtahid</h1>
-            <p>NIM: 4124043 | Prodi: Sistem Informasi</p>
-            <p>Saya siap belajar Laravel! 🚀</p>';
-});
-
-Route::get('/katalog', [KatalogController::class,'index'])->name('katalog.index');
-Route::get('/katalog/{id}', [KatalogController::class,'show'])->name('katalog.show');
-
-Route::get('/profil', [ProfilController::class,'index'])->name('profil.index');
-Route::get('/profil/{nim}', [ProfilController::class,'show'])->name('profil.show');
-
-Route::get('/ruangan', [RuanganController::class,'index'])->name('ruangan.index');
-Route::get('/ruangan/{id}', [RuanganController::class,'show'])->name('ruangan.show');
-Route::get('/booking/{id}', [RuanganController::class,'booking'])->name('ruangan.booking');
->>>>>>> 75ae7736e5dd666dad9ff1bd98aa360f91c9c536
